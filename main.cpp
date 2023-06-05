@@ -1,5 +1,6 @@
 #include "Streaming.hpp"
-#include "Video.hpp"
+#include "Filme.hpp"
+#include "Serie.hpp"
 #include <iostream>
 #include <string>
 
@@ -12,41 +13,36 @@ int main() {
             std::string nome, genero;
             int ano, duracao;
             std::cin >> genero >> ano >> duracao;
+            std::cin.ignore();
             std::getline(std::cin, nome);
 
-            Video* v = new Video(nome, ano, genero, t, duracao, 0, 0);
+            Filme* f = new Filme(nome, ano, genero, duracao);
             if (duracao >= 50) {
-                ss.cadastrar_filme(v);
-            } else {
-                delete v;
+                ss.cadastrar_video(f);
             }
-        } else if (t == "Serie") {
+        }
+        if (t == "Serie") {
             std::string nome, genero;
-            int ano, n_temp, total_ep;
-            std::cin >> genero >> ano >> n_temp >> total_ep;
+            int ano, n_temporadas, total_episodios;
+            std::cin >> genero >> ano >> n_temporadas >> total_episodios;
+            std::cin.ignore();
             std::getline(std::cin, nome);
 
-            Video* v = new Video(nome, ano, genero, t, 0, n_temp, total_ep);
-            if (n_temp >= 2) {
-                ss.cadastrar_serie(v);
-            } else {
-                delete v;
+            Serie* s = new Serie(nome, ano, genero, n_temporadas, total_episodios);
+            if (n_temporadas >= 2) {
+                ss.cadastrar_video(s);
             }
-        } else if (t == "Nota") {
+        }
+        if (t == "Nota") {
             int id, nota;
             std::cin >> id >> nota;
+
             if (nota >= 0 && nota <= 10) {
                 ss.avaliacao(id, nota);
             }
         }
     }
-
     ss.print_catalogo();
-
-    // Liberar memória dos vídeos
-    for (Video* v : ss.catalogo) {
-        delete v;
-    }
 
     return 0;
 }
