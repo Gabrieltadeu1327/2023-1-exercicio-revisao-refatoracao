@@ -1,8 +1,14 @@
 Modificações:
 - Separarei as classes em arquivos diferente. As classes Streaming e Video foram separadas em arquivos de cabeçalho (.hpp) e de implementação (.cpp). Isso tornará o código mais organizado e modular.
+
 - Removi o uso de using namespace std. É uma boa prática evitar o uso de using namespace std. Em vez disso, é preferível usar std:: , como foi feito.
+
 - Utilizei variáveis com nomes mais autoexplicativos e não somente letras como: a, g, d, t.
+
 - A legibilidade do código pode ser melhorada especialmente no Video.hpp e main.cpp.
+
 - Usar construtores e destrutores adequados. No código antigo, não há implementação de construtores e destrutores nas classes Streaming e Video. Seria importante adicionar esses métodos para garantir uma inicialização adequada dos objetos e liberar a memória corretamente.
+
 - Como existe comportamento semelhantes entre filmes e series, por exemplo, seria melhor utilizar conceitos de herança para evitar trabalhos maiores, assim como códigos maiores e torna-los mais simples, compactos e legíveis.
+
 -incluir comentários durante o código para facilitar sua coomprensao.
